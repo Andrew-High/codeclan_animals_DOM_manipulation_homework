@@ -17,17 +17,22 @@ const handleNewWhiskyFormSubmit = function (event) {
 const createWhiskyListItem = function (form) {
     const whiskyListItem = document.createElement('li');
     whiskyListItem.classList.add('whisky-list-item');
-
-    const whisky = document.createElement('h3');
-    whisky.textContent = `Whisky: ${form.whisky.value}`;
-    whiskyListItem.appendChild(whisky);
-
-    const distillery = document.createElement('p');
-    distillery.textContent = `Distillery: ${form.distillery.value}`;
-    whiskyListItem.appendChild(distillery);
-
+    whiskyListItem.appendChild(createWhiskyListItemHeading(form));
+    whiskyListItem.appendChild(createWhiskyListItemDistillery(form));
     return whiskyListItem;
 };
+
+const createWhiskyListItemHeading = function (form) {
+    const whisky = document.createElement('h3');
+    whisky.textContent = `Whisky: ${form.whisky.value}`;
+    return whisky;
+}
+
+const createWhiskyListItemDistillery = function (form) {
+    const distillery = document.createElement('p');
+    distillery.textContent = `Distillery: ${form.distillery.value}`;
+    return distillery;
+}
 
 const handleDeleteAllClick = function (event) {
     const whiskyList = document.querySelector('#whisky-list');
